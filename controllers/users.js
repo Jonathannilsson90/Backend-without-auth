@@ -13,3 +13,14 @@ let users = [
     age: 27,
   },
 ];
+
+export const createUser = (req, res) => {
+  const user = req.body;
+  users.push({ ...user, id: uuidv4() });
+  res.send(`user with the name ${user.firstName} added to DB!`);
+};
+
+export const getUser = (req, res) => {
+  res.send(users);
+  console.log(users);
+};
