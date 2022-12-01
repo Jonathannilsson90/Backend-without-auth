@@ -3,10 +3,10 @@
   "name": "servergroupfive",
   "version": "1.0.0",
   "description": "Project in group with working API.",
-  "main": "serverjs",
+  "main": "index.js",
   "scripts": {
-    "dev":"nodemon app.js",
-    "start": "node app.js"
+    "dev":"nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
