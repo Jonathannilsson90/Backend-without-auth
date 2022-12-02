@@ -19,6 +19,7 @@
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
+    "dotenv": "^16.0.3",
     "nodemon": "^2.0.20"
   }
 }
