@@ -1,13 +1,12 @@
-import express from "express";
+//Get packages in variables
+const express = require("express")
+const app = express ()
+//behövs göras en .env fil här med require
 
-import usersRoutes from "./routes/users.js";
+const PORT = process.env.PORT || 3000
 
-//take in incoming POST request boodies
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.use(express.json());
-app.use("/users", usersRoutes);
+app.use(express.json())
+app.use('/api/users', require('./routes/users'))
 
 //get request
 app.get("/", (req, res) => {
@@ -15,6 +14,8 @@ app.get("/", (req, res) => {
   res.send("Hello from homepage");
 });
 
+//display message when starting server
 app.listen(PORT, () =>
   console.log(`Server running on port: http://localhost:${PORT}`)
 );
+

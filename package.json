@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Project in group with working API.",
   "main": "server.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
+    "test": "nodemon server.js",
     "start": "node server",
     "dev": "nodemon server"
   },

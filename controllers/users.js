@@ -1,48 +1,84 @@
-//export all the callback functions for the CRUD operations
-import { v4 as uuidv4 } from "uuid";
-
-let users = [
-  {
-    firstName: "John",
-    lastName: "Doe",
-    age: 25,
-  },
-  {
-    firstName: "Jane",
-    lastName: "Doe",
-    age: 27,
-  },
+const users = [
+{
+  firstName: "John",
+  lastName: "Doe",
+  age: 25,
+},
+{
+  firstName: "Jane",
+  lastName: "Doe",
+  age: 27,
+},
 ];
 
-export const createUser = (req, res) => {
-  const user = req.body;
-  users.push({ ...user, id: uuidv4() });
-  res.send(`user with the name ${user.firstName} added to DB!`);
+exports.getUser = (req, res) => { 
+  const id = req.params.id * 1;
+  const user = users.find((u) => u.id === id);
+
+  if (!user) {
+    return res.status(400).json({
+      status: "error",
+      msg: "invaid ID",
+    });
+  }
+
+  res.status(200).json({
+    result: users.length,
+    status: "success",
+    data: users,
+  });
 };
 
-export const getUser = (req, res) => {
-  res.send(users);
-  console.log(users);
+exports.getById = (req, res) => {
+  res.status(200).json({
+    status: "success",
+    msg: "Du kom fram till user by ID",
+  });
 };
 
-export const getID = (req, res) => {
-  const { id } = req.params;
-  const foundUser = users.find((user) => user.id === id);
-  res.send(foundUser);
+exports.createUser = (req, res) => {
+  const newId = users[users.length - 1].id + 1;
+  const newUser = Object.assign({ id: newId }, req.body);
+
+  users.push(newUser);
+
+  res.status(200).json({
+    status: "sucess",
+    msg: "Du kom till create User!",
+  });
 };
 
-export const deleteUser = (req, res) => {
-  const { id } = req.params;
-  users = users.filter((user) => user.id != id);
-  res.send(`User with the id ${id} is deleted`);
+exports.updateUser = (req, res) => {
+  const usersId = req.params.id;
+  const { type, color, size } = req.body;
+
+  const newUser = {
+    id: userId,
+    type,
+    color,
+    size,
+  };
+
+  const userIndex = users.findIndex((u) => (u.id = userId));
+  users[userIndex] = newUser;
+
+  res.status(200).json({
+    status: "sucess",
+    msg: "Du kom till update User",
+  });
 };
 
-export const updateUser = (req, res) => {
-  const { id } = req.params;
-  const { firstName, lastName, age } = req.body;
-  const userToBeUpdated = users.find((user) => user.id === id);
-  if (firstName) userToBeUpdated.firstName = firstName;
-  if (lastName) userToBeUpdated.lastName = lastName;
-  if (age) userToBeUpdated.age = age;
-  res.send(`user with id ${id} has been updated`);
+exports.deleteUser = (req, res) => {
+  const userId = req.params.id;
+
+  const userIndex = users.findIndex((u) => u.id == userId);
+  users.Splice(userIndex, 1);
+
+  res.status(200).json({
+    status: "sucess",
+    msg: "Du kom till delete User!",
+  });
 };
+
+//-----BEHÖVS LÄGGAS TILL-----
+//skicka en data response till alla RUD
