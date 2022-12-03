@@ -8,5 +8,6 @@ const port = process.env.PORT || 3000;
 const app = express();
 // Middleware
 app.use(express.json())
+app.use('/api/user', require('./routes/userRoutes'))
 //Server startup message.
 app.listen(port, () => console.log(`Server started on port ${port}`))

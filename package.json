@@ -21,5 +21,13 @@
   "devDependencies": {
     "dotenv": "^16.0.3",
     "nodemon": "^2.0.20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonathannilsson90/ServerGroupFive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jonathannilsson90/ServerGroupFive/issues"
+  },
+  "homepage": "https://github.com/Jonathannilsson90/ServerGroupFive#readme"
 }
