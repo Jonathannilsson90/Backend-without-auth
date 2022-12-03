@@ -13,4 +13,17 @@ export const createUser = (req, res) => {
   
 }
 
+// put API
+export const updateUser = (req, res) => {
+  const { id } = req.params;
+  const { firstName, lastName, age } = req.body;
+  const userToBeUpdated = users.find((user) => user.id === id);
+  if (firstName) userToBeUpdated.firstName = firstName;
+  if (lastName) userToBeUpdated.lastName = lastName;
+  if (age) userToBeUpdated.age = age;
+  res.send({
+    sucess: true,
+    message:"User updated succesfully",
+  })
+};
 
