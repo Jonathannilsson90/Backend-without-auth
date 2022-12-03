@@ -1,3 +1,4 @@
+console.log('routes är igång')//test
 //Unique id
 import { v4 as uuidv4 } from "uuid";
 

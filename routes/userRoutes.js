@@ -1,21 +1,19 @@
-console.log('routes är igång')//test
-
 const express = require('express')
 const router = express.Router()
 
-const userController = require('../controllers/userControllers')
+const clothingController = require('../controllers/clothingControllers')
 
 
-router.get('/', userController.getUser)
+router.get('/', clothingController.getUser)
 
-router.get('/:id', userController.getById)
+router.get('/:id', clothingController.getById)
 
-router.post('/', userController.postUser)
+router.post('/', clothingController.postClothing)
 
 
-router.put('/:id', userController.updatUser)
+router.put('/:id', clothingController.updateClothing)
 
-router.delete('/:id', userController.removeUser)
+router.delete('/:id', clothingController.removeClothing)
 
 
 
