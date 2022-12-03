@@ -17,4 +17,5 @@ router.delete('/:id', clothingController.removeClothing)
 
 
 
+
 module.exports = router;

@@ -1,4 +1,5 @@
-console.log('routes är igång')//test
+console.log('server, routes & controllers är kopplade')//tester
+
 //Unique id
 import { v4 as uuidv4 } from "uuid";
 
