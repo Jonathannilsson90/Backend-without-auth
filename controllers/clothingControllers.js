@@ -30,9 +30,15 @@ export const updateUser = (req, res) => {
 };
 
 export const getById = (req, res) => {
-  res.status().jason({
+  res.status(200).jason({
     sucess: true,
     message: "user found"
   }) 
 }
 
+export const getUser = (req, res) => {
+  res.status(200).jason({
+    sucess: true,
+    message: "GetUser updated sucssesfully"
+  })
+}
