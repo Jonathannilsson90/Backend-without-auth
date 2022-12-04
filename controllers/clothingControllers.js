@@ -29,3 +29,10 @@ export const updateUser = (req, res) => {
   })
 };
 
+export const getById = (req, res) => {
+  res.status().jason({
+    sucess: true,
+    message: "user found"
+  }) 
+}
+
