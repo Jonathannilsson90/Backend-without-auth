@@ -1,22 +1,16 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
+const {
+  getClothes,
+  getClothesById,
+  postClothing,
+  updateClothing,
+  removeClothing,
+} = require("../controllers/clothingControllers");
 
-const clothingController = require('../controllers/clothingControllers')
+router.route("/").get(getClothes).post(postClothing);
 
-
-router.get('/', clothingController.getClothes)
-
-router.get('/:id', clothingController.getClothesById)
-
-router.post('/', clothingController.postClothing)
-
-
-router.put('/:id', clothingController.updateClothing)
-
-router.delete('/:id', clothingController.removeClothing)
-
-
-
+// WARNING: Prettier will format this line of code wrong. It needs to be concatinated to work.
+router.get("/:id").get(getClothesById).put(updateClothing).delete(removeClothing);
 
 module.exports = router;
-
