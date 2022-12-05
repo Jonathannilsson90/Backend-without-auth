@@ -15,7 +15,7 @@ const clothes = [
 const getClothes = (req, res) => {
   res.status(200).json({
     data: clothes,
-    sucess: true,
+    sucess: "success",
     message: "Clothing found"
   }) 
 }
@@ -24,7 +24,7 @@ const getClothes = (req, res) => {
 // ROUTE    GET /api/clothes/:id
 const getClothesById = (req, res) => {
   res.status(200).json({
-    sucess: true,
+    sucess: "success",
     message: "Found clothing"
   })
 }
@@ -36,14 +36,35 @@ const postClothing = (req, res) => {
   const cloth = req.body;
   clothes.push({  ...cloth, id: uuidv4()})
   res.send({
-    sucess: true,
+    sucess: "success",
     message:"New clothing added",
   })
   
 }
 //          PUT clothes
 // ROUTE    PUT /api/clothes/:id
+
 const updateClothing = (req, res) => {
+  const clothesId = req.params.id;
+  const { type, color, size } = req.body;
+
+  const newClothing = {
+    id: clothingId,
+    type,
+    color,
+    size,
+  };
+
+  const clothingIndex = clothes.findIndex((u) => (u.id = clothingId));
+  clothes[clothingIndex] = newClothing;
+
+  req.status(200).json({
+    status: "success",
+    msg: "Clothing updated"
+  });
+};
+
+/*const updateClothing = (req, res) => {
   const { id } = req.params;
   const { type, color, size } = req.body;
   const clothingToBeUpdated = clothes.find((cloth) => cloth.id === id);
@@ -55,6 +76,7 @@ const updateClothing = (req, res) => {
     message:"Clothing updated succesfully",
   })
 };
+*/
 
 //          Delete
 // ROUTE    Delete /api/clothes/:id
@@ -66,7 +88,7 @@ const removeClothing = (req,res) => {
   clothes.splice(clothingIndex, 1);
 
   res.status(200).json({
-    status: "sucess", 
+    status: "success", 
     msg: "Deleted Clothing"
   })
 }
