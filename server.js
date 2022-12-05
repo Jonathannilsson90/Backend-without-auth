@@ -5,9 +5,6 @@ const dotenv = require('dotenv').config()
 // Port declared in .env IF .env is missing 3000 is the port.
 const port = process.env.PORT || 3000;
 
-const { v4: uuidv4 } = require('uuid');
-uuidv4();
-
 //calling for server to start
 const app = express();
 // Middleware
