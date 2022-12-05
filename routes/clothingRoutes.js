@@ -4,9 +4,9 @@ const router = express.Router()
 const clothingController = require('../controllers/clothingControllers')
 
 
-router.get('/', clothingController.getUser)
+router.get('/', clothingController.getClothes)
 
-router.get('/:id', clothingController.getById)
+router.get('/:id', clothingController.getClothesById)
 
 router.post('/', clothingController.postClothing)
 
@@ -19,3 +19,4 @@ router.delete('/:id', clothingController.removeClothing)
 
 
 module.exports = router;
+
