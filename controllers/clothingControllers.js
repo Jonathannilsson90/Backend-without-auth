@@ -2,6 +2,8 @@
 import { v4 as uuidv4 } from "uuid";
 */
 
+const { v4: uuidv4 } = require('uuid');
+
 const clothes = [
   { type: "shirt", color: "red", size: "M" },
   { type: "jeans", color: "blue", size: "L" },
@@ -11,19 +13,19 @@ const clothes = [
 //          Get clothes
 // ROUTE    GET /api/cloth
 const getClothes = (req, res) => {
-  res.status(200).jason({
+  res.status(200).json({
     data: clothes,
     sucess: true,
-    message: "user found"
+    message: "Clothing found"
   }) 
 }
 
 //          Get clothes
 // ROUTE    GET /api/clothes/:id
 const getClothesById = (req, res) => {
-  res.status(200).jason({
+  res.status(200).json({
     sucess: true,
-    message: "GetUser updated sucssesfully"
+    message: "Found clothing"
   })
 }
 
@@ -31,11 +33,11 @@ const getClothesById = (req, res) => {
 //          POST clothes
 // ROUTE    POST /api/clothes/:id
 const postClothing = (req, res) => {
-  const user = req.body;
-  user.push({  ...user, id: uuidv4()})
+  const cloth = req.body;
+  clothes.push({  ...cloth, id: uuidv4()})
   res.send({
     sucess: true,
-    message:"New user added succesfully",
+    message:"New clothing added",
   })
   
 }
@@ -43,14 +45,14 @@ const postClothing = (req, res) => {
 // ROUTE    PUT /api/clothes/:id
 const updateClothing = (req, res) => {
   const { id } = req.params;
-  const { firstName, lastName, age } = req.body;
-  const userToBeUpdated = users.find((user) => user.id === id);
-  if (firstName) userToBeUpdated.firstName = firstName;
-  if (lastName) userToBeUpdated.lastName = lastName;
-  if (age) userToBeUpdated.age = age;
+  const { type, color, size } = req.body;
+  const clothingToBeUpdated = clothes.find((cloth) => cloth.id === id);
+  if (type) clothingToBeUpdated.type = type;
+  if (color) clothingToBeUpdated.color = color;
+  if (size) clothingToBeUpdated.size = size;
   res.send({
     sucess: true,
-    message:"User updated succesfully",
+    message:"Clothing updated succesfully",
   })
 };
 
