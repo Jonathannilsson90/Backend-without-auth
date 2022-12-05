@@ -60,7 +60,15 @@ const updateClothing = (req, res) => {
 // ROUTE    Delete /api/clothes/:id
 
 const removeClothing = (req,res) => {
-  message: "Hej :)"
+  const clothingId = req.params.id;
+
+  const clothingIndex = clothes.findIndex((u) => u.id == clothingId);
+  clothes.splice(clothingIndex, 1);
+
+  res.status(200).json({
+    status: "sucess", 
+    msg: "Deleted Clothing"
+  })
 }
 
 
