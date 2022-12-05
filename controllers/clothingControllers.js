@@ -45,7 +45,7 @@ const postClothing = (req, res) => {
 // ROUTE    PUT /api/clothes/:id
 
 const updateClothing = (req, res) => {
-  const clothesId = req.params.id;
+  const clothingId = req.params.id;
   const { type, color, size } = req.body;
 
   const newClothing = {
@@ -55,7 +55,7 @@ const updateClothing = (req, res) => {
     size,
   };
 
-  const clothingIndex = clothes.findIndex((u) => (u.id = clothingId));
+  const clothingIndex = clothes.findIndex((u) => (u.id == clothingId));
   clothes[clothingIndex] = newClothing;
 
   req.status(200).json({
