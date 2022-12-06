@@ -55,6 +55,7 @@ const postClothing = (req, res) => {
   clothes.push({ ...cloth, id: uuidv4() });
   
 
+  /* -----------ROBIN LÖS ----------
 
   if(req.body.value = "") {
     return res.status(400).json({
@@ -62,7 +63,7 @@ const postClothing = (req, res) => {
       message: "Invalid input",
     })
   }
-
+  */
 
   res.send({
     status: "success",
@@ -78,16 +79,16 @@ const updateClothing = (req, res) => {
   const { type, color, size } = req.body;
 
   const newClothing = {
-    id: clothingId,
     type,
     color,
     size,
+    id: clothingId,
   };
 
   const clothingIndex = clothes.findIndex((u) => u.id == clothingId);
   clothes[clothingIndex] = newClothing;
-
-  req.status(200).json({
+  
+  res.status(200).json({
     status: "success",
     msg: "Clothing updated",
   });
@@ -97,20 +98,10 @@ const updateClothing = (req, res) => {
 // ROUTE    Delete /api/clothes/:id
 
 const removeClothing = (req, res) => {
-  const { clothingId } = req.params.id;
+  const clothingId = req.params.id;
 
   const clothingIndex = clothes.findIndex((u) => u.id == clothingId);
   clothes.splice(clothingIndex, 1);
-
-/*   const id = req.params.id * 1;
-  const clothing = clothes.find((u) => u.id === id);
- */
-  if (!clothingIndex) {
-    return res.status(400).json ({
-      status: "error",
-      msg: "Selected ID does not exist"
-    })
-  }
 
   res.status(200).json({
     status: "success",
