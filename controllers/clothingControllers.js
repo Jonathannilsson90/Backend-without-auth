@@ -5,14 +5,21 @@ import { v4 as uuidv4 } from "uuid";
 const { v4: uuidv4 } = require("uuid");
 
 const clothes = [
-  /*  { type: "shirt", color: "red", size: "M" },
+  /* { type: "shirt", color: "red", size: "M", id: 1},
   { type: "jeans", color: "blue", size: "L" },
-  { type: "socks", color: "white", size: "S" }, */
+  { type: "socks", color: "white", size: "S" }, */ 
 ];
 
 //          Get clothes
 // ROUTE    GET /api/cloth
 const getClothes = (req, res) => {
+
+  if (!clothes.length) {
+    return res.status(400).json ({
+      status: "error",
+      msg: "Clothing library is empty"
+    })
+  }
 
   res.status(200).json({
     data: clothes,
@@ -24,10 +31,11 @@ const getClothes = (req, res) => {
 //          Get clothes
 // ROUTE    GET /api/clothes/:id
 const getClothesById = (req, res) => {
-  res.status(200).json({
-    status: "success",
-    message: "Found clothing",
-  });
+
+  const { id } = req.params;
+  const foundclothes = clothes.find((clothes) => clothes.id === id);
+
+  res.send(foundclothes);
 };
 
 //          POST clothes
@@ -39,7 +47,7 @@ const postClothing = (req, res) => {
   
 
 /*
-  if(null) {
+  if() {
     return res.status(400).json({
       status: "failed",
       msg: "Need to add "
@@ -84,6 +92,16 @@ const removeClothing = (req, res) => {
 
   const clothingIndex = clothes.findIndex((u) => u.id == clothingId);
   clothes.splice(clothingIndex, 1);
+
+  const id = req.params.id * 1;
+  const clothing = clothes.find((u) => u.id === id);
+
+  if (!clothing.id) {
+    return res.status(400).json ({
+      status: "error",
+      msg: "Selected ID does not exist"
+    })
+  }
 
   res.status(200).json({
     status: "success",
