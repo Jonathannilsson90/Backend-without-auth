@@ -22,9 +22,9 @@ const getClothes = (req, res) => {
   }
 
   res.status(200).json({
-    data: clothes,
     status: "success",
     message: "Printing clothing library",
+    data: clothes,
   });
 };
 
@@ -34,9 +34,18 @@ const getClothesById = (req, res) => {
 
   const { id } = req.params;
   const foundclothes = clothes.find((clothes) => clothes.id === id);
-
-  res.send(foundclothes);
-};
+  
+  if(!foundclothes)
+  return res.status(400).json ({
+   status: "error",
+   msg: "Clothing ID not found"
+  });
+  res.status(200).json({
+    status: "success",
+    message: "Clothing ID found",
+    data: foundclothes,
+  })
+}
 
 //          POST clothes
 // ROUTE    POST /api/clothes/:id
@@ -46,14 +55,14 @@ const postClothing = (req, res) => {
   clothes.push({ ...cloth, id: uuidv4() });
   
 
-/*
-  if() {
+
+  if(req.body.value = "") {
     return res.status(400).json({
       status: "failed",
-      msg: "Need to add "
+      message: "Invalid input",
     })
   }
-*/
+
 
   res.send({
     status: "success",
@@ -93,10 +102,10 @@ const removeClothing = (req, res) => {
   const clothingIndex = clothes.findIndex((u) => u.id == clothingId);
   clothes.splice(clothingIndex, 1);
 
-  const id = req.params.id * 1;
+/*   const id = req.params.id * 1;
   const clothing = clothes.find((u) => u.id === id);
-
-  if (!clothing.id) {
+ */
+  if (!clothingIndex) {
     return res.status(400).json ({
       status: "error",
       msg: "Selected ID does not exist"
@@ -105,7 +114,7 @@ const removeClothing = (req, res) => {
 
   res.status(200).json({
     status: "success",
-    msg: "Deleted Clothing",
+    message: "Deleted Clothing",
   });
 };
 
