@@ -24,7 +24,7 @@ In order for the server to start the user will have to type:
 
 ```
 For production: npm start
-For development: npm dev
+For development: npm test
 ```
 
 ## Contributors:
