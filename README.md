@@ -33,5 +33,5 @@ For development: npm test
 |Robin Raczkiewicz| [Robinrac](https://github.com/Robinrac)           |
 |Jonathan Nilsson | [Jonathannilsson90](https://github.com/Jonathannilsson90) |
 |Una Paruma       | [ParumaUna](https://github.com/ParumaUna)         |
-|Shehryar Hassan  | [Shehryar Hassan](https://github.com/sherii190)   |
+|Shehryar Hassan  | [sherii190](https://github.com/sherii190)   |
 |Mustafa Zaitoun  | [muza97](https://github.com/muza97)
