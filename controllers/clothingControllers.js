@@ -13,10 +13,11 @@ const clothes = [
 //          Get clothes
 // ROUTE    GET /api/cloth
 const getClothes = (req, res) => {
+
   res.status(200).json({
     data: clothes,
-    sucess: "success",
-    message: "Clothing found",
+    status: "success",
+    message: "Printing clothing library",
   });
 };
 
@@ -24,7 +25,7 @@ const getClothes = (req, res) => {
 // ROUTE    GET /api/clothes/:id
 const getClothesById = (req, res) => {
   res.status(200).json({
-    sucess: "success",
+    status: "success",
     message: "Found clothing",
   });
 };
@@ -32,10 +33,22 @@ const getClothesById = (req, res) => {
 //          POST clothes
 // ROUTE    POST /api/clothes/:id
 const postClothing = (req, res) => {
+  
   const cloth = req.body;
   clothes.push({ ...cloth, id: uuidv4() });
+  
+
+/*
+  if(null) {
+    return res.status(400).json({
+      status: "failed",
+      msg: "Need to add "
+    })
+  }
+*/
+
   res.send({
-    sucess: "success",
+    status: "success",
     message: "New clothing added",
   });
 };
