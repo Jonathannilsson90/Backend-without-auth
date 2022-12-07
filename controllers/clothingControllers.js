@@ -40,6 +40,7 @@ const getClothesById = (req, res) => {
    status: "error",
    msg: "Clothing ID not found"
   });
+
   res.status(200).json({
     status: "success",
     message: "Clothing ID found",
@@ -53,17 +54,6 @@ const postClothing = (req, res) => {
   
   const cloth = req.body;
   clothes.push({ ...cloth, id: uuidv4() });
-  
-
-  /* -----------ROBIN LÖS ----------
-
-  if(req.body.value = "") {
-    return res.status(400).json({
-      status: "failed",
-      message: "Invalid input",
-    })
-  }
-  */
 
   res.send({
     status: "success",
@@ -73,7 +63,6 @@ const postClothing = (req, res) => {
 
 //          PUT clothes
 // ROUTE    PUT /api/clothes/:id
-
 const updateClothing = (req, res) => {
   const clothingId = req.params.id;
   const { type, color, size } = req.body;
@@ -108,6 +97,7 @@ const removeClothing = (req, res) => {
     message: "Deleted Clothing",
   });
 };
+
 
 module.exports = {
   getClothes,
