@@ -1,5 +1,11 @@
+//Fetch packages Express
 const express = require('express')
+
+//creating router variable using router from express package
 const router = express.Router()
+
+//using chain-method to clean up and structure code more clearly
+//Also makes it more read-friendly
 const {
     getClothes,
     getClothesById,

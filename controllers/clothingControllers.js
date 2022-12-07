@@ -85,7 +85,6 @@ const updateClothing = (req, res) => {
 
 //          Delete
 // ROUTE    Delete /api/clothes/:id
-
 const removeClothing = (req, res) => {
   const clothingId = req.params.id;
 
@@ -98,7 +97,8 @@ const removeClothing = (req, res) => {
   });
 };
 
-
+//Using chain-method for exports to clean up and structure code more clearly
+//Also makes it more read-friendly
 module.exports = {
   getClothes,
   getClothesById,
