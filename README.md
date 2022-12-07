@@ -42,6 +42,7 @@ api/clothes/postClothing - Adds a new "clothing" object to the "clothes" array.
 api/clothes/updateClothing - Changes "clothing" object using it's ID
 api/clothes/removeClothing - removes "clothing" object using it's ID
 ```
+---
 ## Insomnia HTTP verbs:
 These are direct links to the respective functions:
 ```
@@ -51,7 +52,7 @@ postClothing - http://localhost:3000/api/clothes
 updateClothing - http://localhost:3000/api/clothes/ *ID*
 removeClothing - http://localhost:3000/api/clothes/ *ID*
 ```
-
+---
 ## Contributors:
 |Name: | Github:|
 |-----------------|-------------------|
